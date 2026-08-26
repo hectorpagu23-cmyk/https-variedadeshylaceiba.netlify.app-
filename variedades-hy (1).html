@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variedades H&Y</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1B1F;
+    --paper:#FFFBF2;
+    --paper-soft:#FFF3DE;
+    --teal-deep:#0F3D3B;
+    --teal:#15564F;
+    --mango:#FF9F1C;
+    --coral:#FF5D5D;
+    --guava:#E8437C;
+    --mint:#2EC4B6;
+    --gold:#FFD166;
+    --kraft:#E4C79B;
+    --shadow: 0 10px 30px rgba(15,61,59,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2',cursive;
+    margin:0;
+  }
+  button{font-family:inherit; cursor:pointer;}
+  img{max-width:100%; display:block;}
+
+  /* ---------- HEADER ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 22px;
+    background:var(--teal-deep);
+    color:var(--paper);
+    box-shadow:0 4px 14px rgba(0,0,0,0.15);
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Baloo 2',cursive;
+    font-size:1.3rem;
+    font-weight:700;
+    letter-spacing:.3px;
+  }
+  .brand-tag{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:36px; height:36px; border-radius:10px;
+    background:var(--mango);
+    color:var(--teal-deep);
+    font-weight:800;
+    transform:rotate(-6deg);
+    box-shadow:0 3px 0 rgba(0,0,0,0.2);
+  }
+  .top-actions{display:flex; align-items:center; gap:10px;}
+  .pill{
+    font-size:.72rem; font-weight:700;
+    padding:6px 12px; border-radius:999px;
+    background:rgba(255,255,255,0.12);
+    color:var(--gold);
+    border:1px solid rgba(255,209,102,0.4);
+    white-space:nowrap;
+  }
+  .icon-btn{
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.18);
+    color:var(--paper);
+    width:40px; height:40px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem;
+    transition:transform .18s ease, background .18s ease;
+  }
+  .icon-btn:hover{ background:rgba(255,255,255,0.22); transform:translateY(-2px); }
+  .icon-btn.active{ background:var(--mint); color:var(--teal-deep); border-color:transparent; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 140% at 20% 0%, var(--teal) 0%, var(--teal-deep) 60%);
+    color:var(--paper);
+    padding:70px 22px 90px;
+    overflow:hidden;
+    text-align:center;
+  }
+  .lights{
+    display:flex; justify-content:center; gap:26px;
+    padding-bottom:36px;
+  }
+  .bulb{
+    width:12px; height:12px; border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 10px 3px rgba(255,209,102,0.7);
+    animation:glow 1.8s ease-in-out infinite;
+  }
+  .bulb:nth-child(2n){ background:var(--coral); box-shadow:0 0 10px 3px rgba(255,93,93,0.7); animation-delay:.3s;}
+  .bulb:nth-child(3n){ background:var(--mint); box-shadow:0 0 10px 3px rgba(46,196,182,0.7); animation-delay:.6s;}
+  @keyframes glow{ 0%,100%{opacity:.45; transform:scale(.85);} 50%{opacity:1; transform:scale(1.1);} }
+
+  .tagbadge{
+    display:inline-block;
+    margin:0 auto 18px;
+    padding:10px 22px;
+    background:var(--kraft);
+    color:var(--teal-deep);
+    font-family:'Baloo 2',cursive;
+    font-weight:700;
+    border-radius:8px;
+    transform:rotate(-3deg);
+    box-shadow:0 4px 0 rgba(0,0,0,0.15);
+    animation:sway 4.5s ease-in-out infinite;
+    transform-origin:top center;
+    position:relative;
+  }
+  .tagbadge::before{
+    content:"";
+    position:absolute; top:-16px; left:50%; transform:translateX(-50%);
+    width:2px; height:16px; background:rgba(255,251,240,0.5);
+  }
+  @keyframes sway{ 0%,100%{transform:rotate(-3deg);} 50%{transform:rotate(3deg);} }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    line-height:1.05;
+    font-weight:800;
+  }
+  .hero h1 span{ color:var(--mango); }
+  .hero p.sub{
+    max-width:520px; margin:18px auto 0;
+    font-size:1.05rem;
+    color:rgba(255,251,240,0.85);
+  }
+  .hero-cta{
+    margin-top:30px;
+    display:inline-flex; gap:14px; flex-wrap:wrap; justify-content:center;
+  }
+  .btn{
+    border:none; border-radius:999px; padding:13px 26px;
+    font-weight:700; font-size:.95rem;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{ transform:translateY(-3px); }
+  .btn-primary{ background:var(--mango); color:var(--teal-deep); box-shadow:0 8px 0 #c97a0f;}
+  .btn-primary:active{ transform:translateY(0); box-shadow:0 3px 0 #c97a0f;}
+  .btn-ghost{ background:transparent; color:var(--paper); border:2px solid rgba(255,251,240,0.4);}
+  .btn-ghost:hover{ border-color:var(--paper); }
+
+  .float-shape{
+    position:absolute; opacity:.5; pointer-events:none;
+    animation:drift 9s ease-in-out infinite;
+  }
+  @keyframes drift{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-22px) rotate(12deg); }
+  }
+  .fs1{ top:18%; left:6%; font-size:2rem; animation-delay:.2s;}
+  .fs2{ top:65%; left:12%; font-size:1.5rem; animation-delay:1.4s;}
+  .fs3{ top:22%; right:8%; font-size:2.3rem; animation-delay:.8s;}
+  .fs4{ top:70%; right:14%; font-size:1.6rem; animation-delay:2s;}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-wrap{
+    background:var(--mango);
+    overflow:hidden;
+    padding:12px 0;
+    transform:skewY(-1.2deg);
+    margin-top:-18px;
+  }
+  .marquee{
+    display:flex; gap:40px; width:max-content;
+    animation:scroll 22s linear infinite;
+    transform:skewY(1.2deg);
+  }
+  .marquee span{
+    font-family:'Baloo 2',cursive; font-weight:700; font-size:.95rem;
+    color:var(--teal-deep); white-space:nowrap;
+  }
+  @keyframes scroll{ from{transform:translateX(0) skewY(1.2deg);} to{transform:translateX(-50%) skewY(1.2deg);} }
+
+  /* ---------- PRODUCTS ---------- */
+  .products-section{ padding:70px 22px 40px; max-width:1180px; margin:0 auto; }
+  .section-head{
+    display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    margin-bottom:34px;
+  }
+  .section-head h2{ font-size:clamp(1.8rem,4vw,2.5rem); color:var(--teal-deep); }
+  .section-head .count{ color:var(--guava); font-weight:700; }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    gap:26px;
+  }
+  .card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    position:relative;
+    opacity:0; transform:translateY(18px) scale(.97);
+    animation:pop .5s ease forwards;
+  }
+  @keyframes pop{ to{opacity:1; transform:translateY(0) scale(1);} }
+  .card-img{
+    aspect-ratio:1/1; width:100%; overflow:hidden;
+    background:linear-gradient(135deg,var(--paper-soft),#fff);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card-img img{ width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+  .card:hover .card-img img{ transform:scale(1.08); }
+  .card-img .placeholder{ font-size:2.6rem; opacity:.35; }
+  .card-body{ padding:16px 16px 18px; }
+  .card-body h3{ font-size:1.05rem; color:var(--ink); font-weight:700; margin-bottom:10px; min-height:1.3em;}
+  .price-tag{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--kraft); color:var(--teal-deep);
+    font-family:'Baloo 2',cursive; font-weight:700; font-size:1.05rem;
+    padding:6px 14px 6px 10px; border-radius:6px;
+    transform:rotate(-2deg);
+    transition:transform .2s ease;
+    position:relative;
+  }
+  .price-tag::before{
+    content:""; width:8px; height:8px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--teal-deep);
+  }
+  .card:hover .price-tag{ transform:rotate(2deg); }
+  .card-actions{ display:flex; gap:8px; margin-top:14px; }
+  .wa-btn{
+    flex:1; text-align:center; text-decoration:none;
+    background:var(--mint); color:#0a3330; font-weight:700; font-size:.82rem;
+    padding:9px 10px; border-radius:10px; border:none;
+    transition:filter .15s ease;
+  }
+  .wa-btn:hover{ filter:brightness(1.08); }
+  .admin-controls{
+    position:absolute; top:10px; right:10px; display:flex; gap:6px; z-index:5;
+  }
+  .mini-btn{
+    width:32px; height:32px; border-radius:9px; border:none;
+    background:rgba(255,255,255,0.92); box-shadow:0 3px 8px rgba(0,0,0,0.18);
+    display:flex; align-items:center; justify-content:center; font-size:.9rem;
+  }
+  .mini-btn.del:hover{ background:var(--coral); }
+  .mini-btn.edit:hover{ background:var(--gold); }
+
+  .empty-state{
+    text-align:center; padding:60px 20px; color:#8a8578;
+    border:2px dashed var(--kraft); border-radius:18px;
+  }
+  .empty-state .emoji{ font-size:2.8rem; display:block; margin-bottom:12px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--teal-deep); color:rgba(255,251,240,0.75);
+    padding:40px 22px 30px; text-align:center; margin-top:60px;
+  }
+  footer .fbrand{ font-family:'Baloo 2',cursive; color:var(--paper); font-size:1.2rem; margin-bottom:8px;}
+  footer .roadmap{
+    display:inline-block; margin-top:14px; font-size:.8rem;
+    background:rgba(255,255,255,0.08); padding:8px 16px; border-radius:999px;
+    border:1px solid rgba(255,255,255,0.12);
+  }
+
+  /* ---------- FAB ---------- */
+  .fab{
+    position:fixed; bottom:26px; right:26px; z-index:50;
+    width:58px; height:58px; border-radius:50%;
+    background:var(--coral); color:#fff; border:none;
+    font-size:1.6rem; box-shadow:0 10px 24px rgba(232,67,124,0.45);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .2s ease;
+  }
+  .fab:hover{ transform:scale(1.08) rotate(90deg); }
+
+  /* ---------- OVERLAY / MODAL ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(15,61,59,0.55);
+    display:none; align-items:center; justify-content:center;
+    z-index:100; padding:20px; backdrop-filter:blur(2px);
+  }
+  .overlay.show{ display:flex; }
+  .modal{
+    background:var(--paper); border-radius:20px; padding:28px;
+    width:100%; max-width:420px; box-shadow:0 20px 50px rgba(0,0,0,0.3);
+    animation:modalPop .25s ease;
+  }
+  @keyframes modalPop{ from{opacity:0; transform:translateY(14px) scale(.97);} to{opacity:1; transform:translateY(0) scale(1);} }
+  .modal h3{ color:var(--teal-deep); font-size:1.3rem; margin-bottom:6px;}
+  .modal p.hint{ font-size:.85rem; color:#8a8578; margin-bottom:18px; }
+  .field{ margin-bottom:14px; text-align:left; }
+  .field label{ display:block; font-size:.8rem; font-weight:700; color:var(--teal-deep); margin-bottom:6px;}
+  .field input{
+    width:100%; padding:11px 13px; border-radius:10px;
+    border:2px solid #ece4d4; font-size:.95rem; font-family:inherit;
+    background:#fff;
+  }
+  .field input:focus{ outline:none; border-color:var(--mint); }
+  .modal-actions{ display:flex; gap:10px; margin-top:20px; }
+  .modal-actions .btn{ flex:1; }
+  .btn-secondary{ background:#ece4d4; color:var(--teal-deep); }
+  .img-preview{
+    width:100%; aspect-ratio:16/10; border-radius:12px; overflow:hidden;
+    background:var(--paper-soft); display:flex; align-items:center; justify-content:center;
+    margin-bottom:8px; border:2px dashed var(--kraft);
+  }
+  .img-preview img{ width:100%; height:100%; object-fit:cover; }
+  .img-preview span{ color:#a89f8c; font-size:.82rem; }
+
+  .toast{
+    position:fixed; bottom:26px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--teal-deep); color:#fff; padding:12px 22px; border-radius:999px;
+    font-size:.88rem; font-weight:600; box-shadow:0 10px 24px rgba(0,0,0,0.25);
+    opacity:0; pointer-events:none; transition:all .3s ease; z-index:200;
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  @media (max-width:640px){
+    .hero{ padding:50px 16px 70px; }
+    .products-section{ padding:50px 16px 30px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="brand-tag">H&Y</span> Variedades H&Y</div>
+  <div class="top-actions">
+    <span class="pill">💳 Pagos en línea: próximamente</span>
+    <button class="icon-btn" id="settingsBtn" title="Configurar WhatsApp">⚙️</button>
+    <button class="icon-btn" id="lockBtn" title="Modo administrador">🔒</button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="float-shape fs1">🏷️</div>
+  <div class="float-shape fs2">🎈</div>
+  <div class="float-shape fs3">✨</div>
+  <div class="float-shape fs4">🛍️</div>
+  <div class="lights">
+    <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+    <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+    <div class="bulb"></div>
+  </div>
+  <div class="tagbadge">H&Y</div>
+  <h1>Todo lo que buscás,<br><span>en un solo lugar</span></h1>
+  <p class="sub">Variedades para el hogar, cuidado personal, regalos y más — con los mejores precios de la zona.</p>
+  <div class="hero-cta">
+    <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+    <button class="btn btn-ghost" id="heroAdminBtn">Soy el administrador</button>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee" id="marquee"></div>
+</div>
+
+<section class="products-section" id="catalogo">
+  <div class="section-head">
+    <h2>Nuestros productos</h2>
+    <span class="count" id="prodCount"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<footer>
+  <div class="fbrand">Variedades H&Y</div>
+  <p>Gracias por preferirnos 💛</p>
+  <div class="roadmap">🚀 Próximo paso: pagos en línea directos a tu cuenta</div>
+</footer>
+
+<button class="fab" id="addFab" title="Agregar producto">＋</button>
+
+<!-- Password modal -->
+<div class="overlay" id="pwOverlay">
+  <div class="modal">
+    <h3>Acceso de administrador</h3>
+    <p class="hint">Ingresá la clave para poder agregar, editar o eliminar productos.</p>
+    <div class="field">
+      <label>Clave</label>
+      <input type="password" id="pwInput" placeholder="••••••••">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="pwCancel">Cancelar</button>
+      <button class="btn btn-primary" id="pwSubmit">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Product form modal -->
+<div class="overlay" id="prodOverlay">
+  <div class="modal">
+    <h3 id="prodModalTitle">Nuevo producto</h3>
+    <p class="hint">Completá los datos del producto.</p>
+    <div class="img-preview" id="imgPreview"><span>Sin imagen todavía</span></div>
+    <div class="field">
+      <label>Foto del producto</label>
+      <input type="file" id="prodImageInput" accept="image/*">
+    </div>
+    <div class="field">
+      <label>Nombre</label>
+      <input type="text" id="prodNameInput" placeholder="Ej: Champú 400ml">
+    </div>
+    <div class="field">
+      <label>Precio (L)</label>
+      <input type="number" id="prodPriceInput" placeholder="Ej: 95.00" step="0.01" min="0">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="prodCancel">Cancelar</button>
+      <button class="btn btn-primary" id="prodSave">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Settings modal -->
+<div class="overlay" id="settingsOverlay">
+  <div class="modal">
+    <h3>Pedidos por WhatsApp</h3>
+    <p class="hint">Poné tu número (con código de país) para que los clientes puedan pedir productos directo por WhatsApp mientras se activan los pagos en línea.</p>
+    <div class="field">
+      <label>Número de WhatsApp</label>
+      <input type="text" id="waInput" placeholder="Ej: 50499999999">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="settingsCancel">Cancelar</button>
+      <button class="btn btn-primary" id="settingsSave">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ===== FIREBASE (base de datos en la nube, gratis) ===== -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+  // 👇 PEGÁ ACÁ el firebaseConfig que te da la consola de Firebase (ver instrucciones)
+  const firebaseConfig = {
+    apiKey: "AIzaSyBr7_9sEXd0LaPxnx45jIbB2Jhvp892-zU",
+    authDomain: "variedades-hy.firebaseapp.com",
+    projectId: "variedades-hy",
+    storageBucket: "variedades-hy.firebasestorage.app",
+    messagingSenderId: "351906614943",
+    appId: "1:351906614943:web:b2bd1ab8f3d603aad2dcaa",
+    measurementId: "G-84Y424HHCN"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
+<script>
+const ADMIN_PASSWORD = "HYtienda2026"; // Cambiá esta clave por la que quieras
+
+let isAdmin = false;
+let products = [];
+let settings = { whatsapp: "" };
+let editingId = null;
+let pendingImage = null;
+
+const $ = (id) => document.getElementById(id);
+const grid = $('grid');
+const marquee = $('marquee');
+
+const categories = ["🧴 Cuidado personal","🍬 Dulces y snacks","🧸 Juguetes","🧹 Hogar","🎁 Regalos","🖊️ Papelería","💄 Belleza","🔌 Bazar"];
+function buildMarquee(){
+  const items = [...categories, ...categories];
+  marquee.innerHTML = items.map(c => `<span>${c}</span>`).join('<span style="opacity:.5">•</span>');
+}
+buildMarquee();
+
+function showToast(msg){
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=> t.classList.remove('show'), 2200);
+}
+
+function formatPrice(n){
+  const num = Number(n) || 0;
+  return 'L ' + num.toLocaleString('es-HN', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+async function loadData(){
+  try{
+    const snap = await db.collection('hy-store').doc('catalog').get();
+    products = snap.exists ? (snap.data().products || []) : [];
+  }catch(e){ console.error(e); products = []; }
+  try{
+    const snap2 = await db.collection('hy-store').doc('settings').get();
+    settings = snap2.exists ? (snap2.data() || { whatsapp: "" }) : { whatsapp: "" };
+  }catch(e){ console.error(e); settings = { whatsapp: "" }; }
+  render();
+}
+
+async function saveCatalog(){
+  try{
+    await db.collection('hy-store').doc('catalog').set({ products });
+  }catch(e){
+    console.error(e);
+    showToast('No se pudo guardar. Intentá de nuevo.');
+  }
+}
+
+async function saveSettings(){
+  try{
+    await db.collection('hy-store').doc('settings').set(settings);
+  }catch(e){
+    console.error(e);
+    showToast('No se pudo guardar la configuración.');
+  }
+}
+
+function render(){
+  $('prodCount').textContent = products.length ? `${products.length} producto${products.length===1?'':'s'}` : '';
+  if(!products.length){
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
+      <span class="emoji">🛒</span>
+      ${isAdmin ? 'Todavía no hay productos. Tocá el botón ＋ para agregar el primero.' : 'Muy pronto vas a encontrar productos aquí.'}
+    </div>`;
+    return;
+  }
+  grid.innerHTML = products.map((p, i) => {
+    const waLink = settings.whatsapp
+      ? `<a class="wa-btn" target="_blank" href="https://wa.me/${settings.whatsapp}?text=${encodeURIComponent('Hola, me interesa: ' + p.name + ' (' + formatPrice(p.price) + ')')}">Pedir por WhatsApp</a>`
+      : '';
+    return `
+    <div class="card" style="animation-delay:${Math.min(i*0.05,0.4)}s">
+      ${isAdmin ? `<div class="admin-controls">
+          <button class="mini-btn edit" onclick="openEdit('${p.id}')" title="Editar">✏️</button>
+          <button class="mini-btn del" onclick="deleteProduct('${p.id}')" title="Eliminar">🗑️</button>
+        </div>` : ''}
+      <div class="card-img">
+        ${p.image ? `<img src="${p.image}" alt="${p.name}">` : `<span class="placeholder">🖼️</span>`}
+      </div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <div class="price-tag">${formatPrice(p.price)}</div>
+        ${waLink ? `<div class="card-actions">${waLink}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ---------- Admin lock ----------
+function setAdmin(v){
+  isAdmin = v;
+  $('lockBtn').textContent = v ? '🔓' : '🔒';
+  $('lockBtn').classList.toggle('active', v);
+  render();
+}
+
+function openPasswordModal(){ $('pwOverlay').classList.add('show'); $('pwInput').value=''; $('pwInput').focus(); }
+function closePasswordModal(){ $('pwOverlay').classList.remove('show'); }
+
+$('lockBtn').addEventListener('click', ()=> isAdmin ? setAdmin(false) : openPasswordModal());
+$('heroAdminBtn').addEventListener('click', ()=> isAdmin ? showToast('Ya estás en modo administrador') : openPasswordModal());
+$('pwCancel').addEventListener('click', closePasswordModal);
+$('pwSubmit').addEventListener('click', ()=>{
+  if($('pwInput').value === ADMIN_PASSWORD){
+    setAdmin(true);
+    closePasswordModal();
+    showToast('Modo administrador activado');
+  }else{
+    showToast('Clave incorrecta');
+  }
+});
+$('pwInput').addEventListener('keydown', (e)=>{ if(e.key==='Enter') $('pwSubmit').click(); });
+
+// ---------- Product form ----------
+function openAddForm(){
+  if(!isAdmin){ openPasswordModal(); return; }
+  editingId = null;
+  pendingImage = null;
+  $('prodModalTitle').textContent = 'Nuevo producto';
+  $('prodNameInput').value = '';
+  $('prodPriceInput').value = '';
+  $('prodImageInput').value = '';
+  $('imgPreview').innerHTML = '<span>Sin imagen todavía</span>';
+  $('prodOverlay').classList.add('show');
+}
+
+window.openEdit = function(id){
+  if(!isAdmin) return;
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  editingId = id;
+  pendingImage = p.image || null;
+  $('prodModalTitle').textContent = 'Editar producto';
+  $('prodNameInput').value = p.name;
+  $('prodPriceInput').value = p.price;
+  $('prodImageInput').value = '';
+  $('imgPreview').innerHTML = p.image ? `<img src="${p.image}">` : '<span>Sin imagen todavía</span>';
+  $('prodOverlay').classList.add('show');
+}
+
+window.deleteProduct = async function(id){
+  if(!isAdmin) return;
+  if(!confirm('¿Eliminar este producto?')) return;
+  products = products.filter(p=>p.id!==id);
+  await saveCatalog();
+  render();
+  showToast('Producto eliminado');
+}
+
+$('addFab').addEventListener('click', openAddForm);
+$('prodCancel').addEventListener('click', ()=> $('prodOverlay').classList.remove('show'));
+
+$('prodImageInput').addEventListener('change', (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev)=>{
+    const img = new Image();
+    img.onload = ()=>{
+      const maxW = 500;
+      const scale = Math.min(1, maxW / img.width);
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      pendingImage = canvas.toDataURL('image/jpeg', 0.72);
+      $('imgPreview').innerHTML = `<img src="${pendingImage}">`;
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+$('prodSave').addEventListener('click', async ()=>{
+  const name = $('prodNameInput').value.trim();
+  const price = $('prodPriceInput').value;
+  if(!name){ showToast('Ponele un nombre al producto'); return; }
+  if(price === '' || Number(price) < 0){ showToast('Ingresá un precio válido'); return; }
+
+  if(editingId){
+    const p = products.find(x=>x.id===editingId);
+    p.name = name;
+    p.price = Number(price);
+    p.image = pendingImage;
+  }else{
+    products.unshift({
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2,7),
+      name, price: Number(price), image: pendingImage, createdAt: Date.now()
+    });
+  }
+  await saveCatalog();
+  render();
+  $('prodOverlay').classList.remove('show');
+  showToast('Producto guardado');
+});
+
+// ---------- Settings (WhatsApp) ----------
+$('settingsBtn').addEventListener('click', ()=>{
+  if(!isAdmin){ openPasswordModal(); return; }
+  $('waInput').value = settings.whatsapp || '';
+  $('settingsOverlay').classList.add('show');
+});
+$('settingsCancel').addEventListener('click', ()=> $('settingsOverlay').classList.remove('show'));
+$('settingsSave').addEventListener('click', async ()=>{
+  settings.whatsapp = $('waInput').value.replace(/\D/g,'');
+  await saveSettings();
+  render();
+  $('settingsOverlay').classList.remove('show');
+  showToast('Configuración guardada');
+});
+
+// close overlays on backdrop click
+document.querySelectorAll('.overlay').forEach(ov=>{
+  ov.addEventListener('click', (e)=>{ if(e.target === ov) ov.classList.remove('show'); });
+});
+
+loadData();
+</script>
+</body>
+</html>
